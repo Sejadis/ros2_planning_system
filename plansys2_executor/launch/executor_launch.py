@@ -49,6 +49,7 @@ def generate_launch_description():
         node_name='executor',
         namespace=namespace,
         output='screen',
+        prefix=['xterm -e gdb -ex run --args'],
         parameters=[
           {
             'default_action_bt_xml_filename': default_action_bt_xml_filename

@@ -121,26 +121,27 @@ ExecutorNode::on_configure(const rclcpp_lifecycle::State & state)
       ament_index_cpp::get_package_share_directory("plansys2_executor") +
       "/behavior_trees/plansys2_action_bt.xml";
   }
-
+    std::cout << "A" << std::endl;
   std::ifstream ifs(default_action_bt_xml_filename);
   if (!ifs) {
     RCLCPP_ERROR_STREAM(get_logger(), "Error openning [" << default_action_bt_xml_filename << "]");
     return CallbackReturnT::FAILURE;
   }
-
+    std::cout << "B" << std::endl;
   action_bt_xml_.assign(
     std::istreambuf_iterator<char>(ifs), std::istreambuf_iterator<char>());
-
+    std::cout << "C"<< std::endl;
   dotgraph_pub_ = this->create_publisher<std_msgs::msg::String>("dot_graph", 1);
-
+    std::cout << "D" << std::endl;
   aux_node_ = std::make_shared<rclcpp::Node>("executor_helper");
+    std::cout << "D.5" << std::endl;
   domain_client_ = std::make_shared<plansys2::DomainExpertClient>();
   problem_client_ = std::make_shared<plansys2::ProblemExpertClient>();
   planner_client_ = std::make_shared<plansys2::PlannerClient>();
-
+    std::cout << "E" << std::endl;
   execution_info_pub_ = create_publisher<plansys2_msgs::msg::ActionExecutionInfo>(
     "/action_execution_info", 100);
-
+    std::cout << "F" << std::endl;
   RCLCPP_INFO(get_logger(), "[%s] Configured", get_name());
   return CallbackReturnT::SUCCESS;
 }
