@@ -144,8 +144,12 @@ ActionExecutor::request_for_performers()
   msg.action = action_name_;
   msg.arguments = action_params_;
 
-  action_hub_pub_->publish(msg);
-}
+        if (!action_hub_pub_) {
+            std::cout << "publisher is null, skipping publish" << std::endl;
+        } else {
+            action_hub_pub_->publish(msg);
+        }
+    }
 
 BT::NodeStatus
 ActionExecutor::get_status()
