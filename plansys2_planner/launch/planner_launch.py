@@ -20,7 +20,7 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
     stdout_linebuf_envvar = SetEnvironmentVariable(
-        'RCUTILS_CONSOLE_STDOUT_LINE_BUFFERED', '1')
+        'RCUTILS_LOGGING_BUFFERED_STREAM', '1')
     namespace = LaunchConfiguration('namespace')
     params_file = LaunchConfiguration('params_file')
 

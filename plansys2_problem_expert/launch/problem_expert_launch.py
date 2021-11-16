@@ -25,7 +25,7 @@ def generate_launch_description():
     params_file = LaunchConfiguration('params_file')
 
     stdout_linebuf_envvar = SetEnvironmentVariable(
-        'RCUTILS_CONSOLE_STDOUT_LINE_BUFFERED', '1')
+        'RCUTILS_LOGGING_BUFFERED_STREAM', '1')
 
     declare_model_file_cmd = DeclareLaunchArgument(
         'model_file',
